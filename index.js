@@ -2,33 +2,29 @@ import express from 'express'
 import morgan from 'morgan'
 const app = express()
 
-let persons = {
-  "persons": [
-    {
-      "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": "1"
-    },
-    {
-      "name": "Ada Lovelace",
-      "number": "39-44-5323523",
-      "id": "2"
-    },
-    {
-      "name": "Dan Abramov",
-      "number": "12-43-234345",
-      "id": "3"
-    },
-    {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
-      "id": "4"
-    }
-  ]
-}
-"POST /api/persons 200 59 - 3.735 ms"
+let persons = [
+  {
+    "name": "Arto Hellas",
+    "number": "040-123456",
+    "id": "1"
+  },
+  {
+    "name": "Ada Lovelace",
+    "number": "39-44-5323523",
+    "id": "2"
+  },
+  {
+    "name": "Dan Abramov",
+    "number": "12-43-234345",
+    "id": "3"
+  },
+  {
+    "name": "Mary Poppendieck",
+    "number": "39-23-6423122",
+    "id": "4"
+  }
+]
 
-"POST /api/persons 200 58 - 3.124 ms"
 app.use(express.json())
 morgan.token('body', req => {
   return JSON.stringify(req.body)
@@ -44,7 +40,7 @@ app.get('/', (request, response) => {
 app.get('/info', (request, response) => {
   const date = new Date()
   response.send(`
-    <p>Phonebook has info for ${persons.persons.length} people</p>
+    <p>Phonebook has info for ${persons.length} people</p>
     <p>${date}</p>`)
 })
 
@@ -53,7 +49,7 @@ app.get('/api/persons', (request, response) => {
 })
 
 app.get('/api/persons/:id', (request, response) => {
-  const person = persons.persons.find(person => person.id === request.params.id)
+  const person = persons.find(person => person.id === request.params.id)
   if (person) {
     response.json()
   }
@@ -70,12 +66,12 @@ app.post('/api/persons', (request, response) => {
   else if (!person.hasOwnProperty('number')) {
     response.status(400).end('number is missing')
   } else {
-    const nameIsUnique = persons.persons.find(p => p.name === person.name)
+    const nameIsUnique = persons.find(p => p.name === person.name)
     if (nameIsUnique) {
       response.status(400).end('name must be unique')
     } else {
-      person.id = Math.floor(Math.random() * 200000)
-      persons.persons = persons.persons.concat(person)
+      person.id = Math.floor(Math.random() * 200000).toString()
+      persons = persons.concat(person)
       response.json(person)
     }
   }
@@ -84,7 +80,7 @@ app.post('/api/persons', (request, response) => {
 
 app.delete('/api/persons/:id', (request, response) => {
   const id = request.params.id
-  persons = persons.persons.filter(person => person.id !== id)
+  persons = persons.filter(person => person.id !== id)
   response.status(204).end()
 })
 
