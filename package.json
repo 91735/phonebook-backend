@@ -3,19 +3,20 @@
   "version": "0.0.1",
   "description": "phonebook backend",
   "license": "CC-BY-NC-3.0",
-  "author": "vuori",
+  "author": "91735",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "build:ui": "cp -r * ../../../phonebook-deployment && rm -rf ../../../phonebook-deployment/dist && cd ../../part2/phonebook && npm run build && cp -r dist ../../../phonebook-deployment",
-    "deploy:full": "npm run build:ui && cd ../../../phonebook-deployment && git add . && git commit -m uibuild && git push",
+    "deploy:full": "npm run build:ui && cd ../../../phonebook-deployment && git config --local user.email '243545406+91735@users.noreply.github.com '&& git config --local user.name '91735' && git add . && git commit -m uibuild && git push",
     "dev": "node --watch index.js",
-
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^5.2.1",
+    "mongodb": "^7.1.1",
+    "mongoose": "^9.4.1",
     "morgan": "^1.10.1"
   }
 }
