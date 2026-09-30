@@ -43,11 +43,11 @@ app.get('/api/persons', (request, response) => {
 // })
 
 app.post('/api/persons', (request, response) => {
-  const person = request.body
-  if (!person.hasOwnProperty('name')) {
+  const { name, number } = request.body
+  if (!name) {
     response.status(400).end('name is missing')
   }
-  else if (!person.hasOwnProperty('number')) {
+  else if (!number) {
     response.status(400).end('number is missing')
   } else {
     Person.find({ name: person.name }).then(result => {
