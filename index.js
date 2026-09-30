@@ -50,7 +50,7 @@ app.post('/api/persons', (request, response) => {
   else if (!number) {
     response.status(400).end('number is missing')
   } else {
-    Person.find({ name: person.name }).then(result => {
+    Person.find({ name }).then(result => {
       if (result.length !== 0) {
         response.status(400).end('name must be unique')
       } else {
