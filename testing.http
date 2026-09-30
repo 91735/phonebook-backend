@@ -1,6 +1,7 @@
+### GET Persons
 GET http://localhost:3001/api/persons
 
-###
+### ADD Person
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
@@ -8,14 +9,14 @@ Content-Type: application/json
   "name": "Orava Koira",
   "number": "040-987654321"
 }
-###
+### ADD Person, name missing
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
   "number": "040-987654321"
 }
-###
+### ADD Person, number missing
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
