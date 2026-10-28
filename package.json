@@ -6,6 +6,9 @@
   "author": "91735",
   "type": "module",
   "main": "index.js",
+  "engine": {
+    "node": "26.12.1"
+  },
   "scripts": {
     "start": "node index.js",
     "build:ui": "cp -r * ../../../phonebook-deployment && rm -rf ../../../phonebook-deployment/dist && cd ../../part2/phonebook && npm run build && cp -rf dist ../../../phonebook-deployment",
