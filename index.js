@@ -34,15 +34,17 @@ app.get('/api/persons', (request, response) => {
   .catch(error => next(error))
 })
 
-// app.get('/api/persons/:id', (request, response) => {
-//   const person = Person.find(person => person.id === request.params.id)
-//   if (person) {
-//     response.json()
-//   }
-//   else {
-//     response.status(404).end()
-//   }
-// })
+app.get('/api/persons/:id', (request, response) => {
+  Person.findById(request.params.id)
+    .then(person => {
+      if (person) {
+        response.json(person)
+      }
+      else {
+        response.status(404).end()
+      }
+    })
+})
 
 app.post('/api/persons', (request, response, next) => {
   const { name, number } = request.body
