@@ -23,5 +23,14 @@ Content-Type: application/json
 {
   "name": "Koira"
 }
-###
-DELETE http://localhost:3001/api/persons/3
+### Delete person
+DELETE http://localhost:3001/api/persons/6a96ea5b441a75ea87429f2c
+
+### UPDATE Person
+PUT http://localhost:3001/api/persons/6abcb1bc1402f068af3ccd28
+Content-Type: application/json
+
+{
+  "name": "",
+  "number": "6667"
+}
