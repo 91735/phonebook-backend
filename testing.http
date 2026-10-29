@@ -12,8 +12,8 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-  "name": "kk",
-  "number": "040-987654321"
+  "name": "kkd",
+  "number": "040-1234"
 }
 ### ADD Person, name missing
 POST http://localhost:3001/api/persons
