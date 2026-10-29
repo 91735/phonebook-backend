@@ -12,7 +12,7 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
-  "name": "Orava Koira",
+  "name": "kk",
   "number": "040-987654321"
 }
 ### ADD Person, name missing
